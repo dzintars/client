@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/oswee/proto/v1"
+	"github.com/oswee/client/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
