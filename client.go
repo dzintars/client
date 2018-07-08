@@ -3,10 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/oswee/client/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+
+	"github.com/oswee/proto/api/go"
 )
 
 func main() {
