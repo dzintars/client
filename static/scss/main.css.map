@@ -1,0 +1,20 @@
+{
+    "version": 3,
+    "mappings": "AQAA,AAAA,IAAI,EAAE,IAAI,CAAC;EACP,WAAW,EAAE,wFAAwF;EACrG,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;CACZ;;AACD,AAAA,GAAG,CAAC;EACA,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "main.scss",
+        "1-helpers/_1-helpers.scss",
+        "1-helpers/_variables.scss",
+        "2-base/_2-base.scss",
+        "2-base/_global.scss",
+        "3-layout/_3-layout.scss",
+        "3-layout/_layout.scss",
+        "4-modules/_4-modules.scss",
+        "4-modules/_index.scss",
+        "5-templates/_5-templates.scss",
+        "6-theme/_6-theme.scss",
+        "6-theme/_theme.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

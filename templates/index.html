@@ -1,4 +1,8 @@
 {{ template "header"}}
-<h1>Index</h1>
-{{ . }}
+<div>
+    <h1>Films</h1>
+    {{ range .Films }}
+    <p>{{ .Id }} | {{ .Title }} | {{ .Director }} | {{ .Producer }}</p>
+    {{ end }}
+</div>
 {{ template "footer"}}
