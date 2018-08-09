@@ -1,8 +1,47 @@
 {{ template "header"}}
 <div>
-    <h1>Films</h1>
+    <h1>gRPC</h1>
+    <a href="/signin"><h1>Sign In</h1></a>
     {{ range .Films }}
     <p>{{ .Id }} | {{ .Title }} | {{ .Director }} | {{ .Producer }}</p>
     {{ end }}
+
+    <!-- Application name: {{ .Appx.Name }} -->
 </div>
+<hr>
+<div>
+    <h1>gRPC Applications</h1>
+</div>
+<table>
+    <colgroup>
+        <col style="width: 40px;">
+        <col style="width: 40x;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: 80px;">
+        <col style="width: 80px;">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Parent</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>Permalink</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Apps }}
+        <tr>
+            <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
+            <td>{{ .ParentId }}</td>
+            <td>{{ .Name }}</td>
+            <td>{{ .FullName}}</td>
+            <td>{{ .Permalink }}</td>
+            <td>{{ .Type }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
 {{ template "footer"}}

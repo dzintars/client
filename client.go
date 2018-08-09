@@ -13,5 +13,5 @@ func main() {
 	r := routes.NewRouter()
 	//Pass routes package to Handler
 	http.Handle("/", r)
-	http.ListenAndServe(":90", nil)
+	http.ListenAndServe(":80", nil)
 }
