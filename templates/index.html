@@ -1,12 +1,9 @@
 {{ template "header"}}
 <div>
-    <h1>gRPC</h1>
+    <h1>Oswee gRPC</h1>
+    <p>Refactoring to implement gRPC services</p>
     <a href="/signin"><h1>Sign In</h1></a>
-    {{ range .Films }}
-    <p>{{ .Id }} | {{ .Title }} | {{ .Director }} | {{ .Producer }}</p>
-    {{ end }}
-
-    <!-- Application name: {{ .Appx.Name }} -->
+    Application name: {{ .Application.Name }}
 </div>
 <hr>
 <div>
@@ -32,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ range .Apps }}
+        {{ range .Applications }}
         <tr>
             <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
             <td>{{ .ParentId }}</td>
