@@ -1,0 +1,26 @@
+.i-icon {
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    stroke-width: 2;
+}
+
+button[open-launcher] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    min-width: 48px;
+    height: 100%;
+    background-color: $blue;
+    cursor: pointer;
+    color: $light5;
+    font-weight: 400;
+    font-size: 1rem;
+    vertical-align: center;
+    margin-right: 8px;
+    & svg {
+        fill: $light;
+    }
+  }

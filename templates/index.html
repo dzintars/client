@@ -1,44 +1,51 @@
-{{ template "header"}}
-<div>
-    <h1>Oswee gRPC</h1>
-    <p>Refactoring to implement gRPC services</p>
-    <a href="/signin"><h1>Sign In</h1></a>
-    Application name: {{ .Application.Name }}
-</div>
-<hr>
-<div>
-    <h1>gRPC Applications</h1>
-</div>
-<table>
-    <colgroup>
-        <col style="width: 40px;">
-        <col style="width: 40x;">
-        <col style="width: auto;">
-        <col style="width: auto;">
-        <col style="width: 80px;">
-        <col style="width: 80px;">
-    </colgroup>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Parent</th>
-            <th>Name</th>
-            <th>Full Name</th>
-            <th>Permalink</th>
-            <th>Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{ range .Applications }}
-        <tr>
-            <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
-            <td>{{ .ParentId }}</td>
-            <td>{{ .Name }}</td>
-            <td>{{ .FullName}}</td>
-            <td>{{ .Permalink }}</td>
-            <td>{{ .Type }}</td>
-        </tr>
-        {{ end }}
-    </tbody>
-</table>
+{{ template "header" . }}
+<os-viewport>
+    <os-taskbar slot="taskbar-area">
+        <button slot="launcher-area" open-launcher>
+            <svg class="i-icon">
+                <use xlink:href="/static/img/svg-icons/icons.svg#i-9dots"></use>
+            </svg>
+        </button>
+        {{ template "inc-authentication-form" . }}
+        <h1 slot="main-area">{{ .Application.Name }}</h1>
+    </os-taskbar>
+    <os-workspace slot="workspace-area">
+        <p slot="toolbar">Toolbar</p>
+        <table slot="main-panel">
+            <colgroup>
+                <col style="width: 40px;">
+                <col style="width: 40x;">
+                <col style="width: auto;">
+                <col style="width: auto;">
+                <col style="width: 80px;">
+                <col style="width: 80px;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Parent</th>
+                    <th>Name</th>
+                    <th>Full Name</th>
+                    <th>Permalink</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .Applications }}
+                <tr>
+                    <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
+                    <td>{{ .ParentId }}</td>
+                    <td>{{ .Name }}</td>
+                    <td>{{ .FullName}}</td>
+                    <td>{{ .Permalink }}</td>
+                    <td>{{ .Type }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+        <div slot="right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
+    </os-workspace>
+
+</os-viewport>
+
 {{ template "footer"}}

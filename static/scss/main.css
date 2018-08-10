@@ -1,10 +1,128 @@
-html, body {
+* {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body, p {
   padding: 0;
   margin: 0;
 }
 
 div {
   padding: 20px;
+}
+
+.i-icon {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  stroke-width: 2;
+}
+
+button[open-launcher] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  min-width: 48px;
+  height: 100%;
+  background-color: #006AFF;
+  cursor: pointer;
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1rem;
+  vertical-align: center;
+  margin-right: 8px;
+}
+
+button[open-launcher] svg {
+  fill: white;
+}
+
+table {
+  table-layout: fixed;
+  overflow: auto;
+  font-size: 0.8em;
+  border-collapse: collapse;
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
+}
+
+table colgroup col {
+  border-right: 1px solid #e6e6e6;
+  background: transparent;
+}
+
+table colgroup col:hover {
+  background: #006AFF;
+}
+
+table colgroup col:last-child {
+  border-right: none;
+}
+
+table thead {
+  display: table-header-group;
+  vertical-align: middle;
+}
+
+table thead tr {
+  height: 21px;
+  background: #f2f2f2;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+table thead tr th {
+  text-align: left;
+  padding: 0 0 0 4px;
+  font-weight: bold;
+}
+
+table thead tr th:hover {
+  background: #e6e6e6;
+  cursor: context-menu;
+}
+
+table tbody {
+  display: table-row-group;
+  border-right: none;
+}
+
+table tbody tr {
+  height: 21px;
+  border-top: 1px solid #f2f2f2;
+  border-right: none;
+}
+
+table tbody tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+table tbody tr:hover {
+  background: #e6e6e6;
+}
+
+table tbody tr td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 4px;
+  cursor: context-menu;
+}
+
+table tbody [class*="tbl-row-"].selected {
+  border: 1px solid #006AFF;
+  background: #f2f2f2;
 }
 /*# sourceMappingURL=main.css.map */

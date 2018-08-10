@@ -1,0 +1,99 @@
+// *******************************
+// CH01 - Color Variables
+// CH02 - Breakpoint Variables
+// *******************************
+
+// *******************************
+// CH01 - Color Variables
+// *******************************
+
+$white: rgba(255,255,255,1);
+$black: #000;
+$red: #E70E02;
+$orange: #FCBA04;
+$blue: #006AFF;
+$green: #3EC300;
+$violet: #CA3CFF;
+
+$light: $white; //Primary color
+$light2: darken($light, 3%);
+$light5: darken($light, 5%);
+$light10: darken($light, 10%);
+$light20: darken($light, 20%);
+$light30: darken($light, 30%);
+$light40: darken($light, 40%);
+$light50: darken($light, 50%);
+$light60: darken($light, 60%);
+$light65: darken($light, 65%);
+$light70: darken($light, 70%);
+$light80: darken($light, 80%);
+$light90: darken($light, 90%);
+
+$blue20: lighten($blue, 20%);
+
+$alert: $red;
+$alert20: darken($red, 20%);
+$alert30: lighten($red, 30%);
+
+$primaryColor: $light;
+
+$dark: $black;
+$dark1: darken($dark, 10%);
+
+
+
+$colorDefault: $light;
+$colorDefault1: darken($colorDefault, 10%);
+$colorDefault2: darken($colorDefault, 20%);
+$colorDefault3: darken($colorDefault, 30%);
+$colorDefault4: darken($colorDefault, 40%);
+
+$colorSuccess: green;
+
+$colorDanger: red;
+
+$colorAttention: dodgerblue;
+
+$blue5: darken($blue, 5%);
+$blue10: darken($blue, 10%);
+$blue15: darken($blue, 15%);
+$blue20: darken($blue, 20%);
+
+
+
+// *******************************
+// CH02 - Breakpoint Variables
+// *******************************
+
+$breakpoint-desktop: 1200px;
+$breakpoint-laptop: 950px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 400px;
+
+// *******************************
+// Global class naming prefix variables
+// *******************************
+
+// Global CSS Version prefix
+$os1: "os1";
+
+$start: "-start";
+$menu: "-menu";
+
+//Start Menu
+$startMenuContainerWidth: 100%;
+$startMenuContainerHeight: calc(100% - 36px);
+$startMenuBodyWidth: 45%;
+$startMenuBodyHeight: 100%;
+
+$px28: 28px;
+$px32: 32px;
+$px36: 36px;
+$px48: 48px;
+
+$h-28: $px28;
+$h-32: $px32;
+$h-36: $px36;
+$h-48: $px48;
+$w-32: $px32;
+$w-36: $px36;

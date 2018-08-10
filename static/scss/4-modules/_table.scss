@@ -1,0 +1,69 @@
+table {
+  table-layout: fixed;
+  overflow: auto;
+  font-size: 0.8em;
+  border-collapse: collapse; //Should be defined for column border styling
+  border-bottom: 1px solid $light10;
+  width: 100%;
+  & colgroup {
+    //background: red;
+    & col {
+      border-right: 1px solid $light10;
+      background: transparent;
+      &:hover {
+        background: $blue;
+      }
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  & thead {
+    display: table-header-group;
+    vertical-align: middle;
+    & tr {
+      height: 21px;
+      background: $light5;
+      border-bottom: 1px solid $light10;
+      & th {
+        text-align: left;
+        padding: 0 0 0 4px;
+        font-weight: bold;
+        &:hover {
+          background: $light10;
+          cursor: context-menu;
+        }
+      }
+    }
+  }
+
+  & tbody {
+    display: table-row-group;
+    border-right: none;
+    & tr {
+      height: 21px;
+      border-top: 1px solid $light5;
+      border-right: none;
+      &:nth-child(even) {
+        background: $light5;
+      }
+      &:hover {
+        background: $light10;
+      }
+      & td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 4px;
+        cursor:context-menu;
+      }
+    }
+    & [class*="tbl-row-"] {
+      &.selected {
+        border: 1px solid $blue;
+        background: $light5;
+      }
+    }
+  }
+}
