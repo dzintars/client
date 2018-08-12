@@ -45,6 +45,11 @@ table {
       height: 21px;
       border-top: 1px solid $light5;
       border-right: none;
+      &[draggable="true"] {
+        & td {
+          cursor: move;
+        }
+      }
       &:nth-child(even) {
         background: $light5;
       }

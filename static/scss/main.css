@@ -4,13 +4,56 @@
           box-sizing: border-box;
 }
 
-html, body, p {
+html, body, p, a {
   padding: 0;
   margin: 0;
 }
 
 div {
   padding: 20px;
+}
+
+.toolbar {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+
+.toolbar a {
+  text-decoration: unset;
+}
+
+.toolbar input, .toolbar button {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 24px;
+  min-width: 60px;
+  margin-left: 4px;
+}
+
+.toolbar input.success, .toolbar button.success {
+  border: 1px solid #3EC300;
+}
+
+.toolbar input.primary, .toolbar button.primary {
+  border: 1px solid #006AFF;
+}
+
+.toolbar input.danger, .toolbar button.danger {
+  border: 1px solid #E70E02;
+}
+
+.toolbar input.default, .toolbar button.default {
+  border: unset;
+}
+
+.toolbar button {
+  background-color: #f2f2f2;
+}
+
+.toolbar button:hover {
+  background-color: #e6e6e6;
 }
 
 .i-icon {
@@ -103,6 +146,10 @@ table tbody tr {
   height: 21px;
   border-top: 1px solid #f2f2f2;
   border-right: none;
+}
+
+table tbody tr[draggable="true"] td {
+  cursor: move;
 }
 
 table tbody tr:nth-child(even) {

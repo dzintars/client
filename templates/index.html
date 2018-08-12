@@ -10,7 +10,12 @@
         <h1 slot="main-area">{{ .Application.Name }}</h1>
     </os-taskbar>
     <os-workspace slot="workspace-area">
-        <p slot="toolbar">Toolbar</p>
+        <div slot="toolbar" class="toolbar">
+            <a href="#">
+                <button class="success">New</button>
+            </a>
+            <button class="danger">Delete</button>
+        </div>
         <table slot="main-panel">
             <colgroup>
                 <col style="width: 40px;">
@@ -32,7 +37,7 @@
             </thead>
             <tbody>
                 {{ range .Applications }}
-                <tr>
+                <tr draggable="true">
                     <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
                     <td>{{ .ParentId }}</td>
                     <td>{{ .Name }}</td>

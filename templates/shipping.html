@@ -1,0 +1,34 @@
+{{ template "header" . }}
+<h1>Shipping Orders</h1>
+<table>
+    <colgroup>
+        <col style="width: 40px;">
+        <col style="width: 40x;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: 80px;">
+        <col style="width: 80px;">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stakeholder</th>
+            <th>Delivery Address</th>
+            <th>Total Weight</th>
+            <th>Sequence</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .DeliveryOrders }}
+        <tr draggable="true">
+            <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
+            <td>{{ .StakeholderId }}</td>
+            <td>{{ .DestinationAddress }}</td>
+            <td>{{ .TotalWeight}}</td>
+            <td>{{ .RoutingSequence }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+
+{{ template "footer" }}

@@ -2,10 +2,42 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
 }
-html, body, p {
+html, body, p, a {
     padding: 0;
     margin: 0;
 }
 div {
     padding: 20px;
+}
+
+.toolbar {
+    align-items: center;
+    padding: 0;
+    & a {
+        text-decoration: unset;
+    }
+    & input, button {
+        box-sizing: border-box;
+        height: 24px;
+        min-width: 60px; 
+        margin-left: 4px;
+        &.success {
+            border: 1px solid $green;
+        }
+        &.primary {
+            border: 1px solid $blue;
+        }
+        &.danger {
+            border: 1px solid $red;
+        }
+        &.default {
+            border: unset;
+        }
+    }
+    & button {
+        background-color: $light5;
+        &:hover {
+            background-color: $light10;
+        }
+    }
 }

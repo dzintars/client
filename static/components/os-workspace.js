@@ -24,7 +24,7 @@ workspace.innerHTML = `
         flex-direction: row;
     }
     .sidebar {
-        width: 20px;
+        display: none;
     }
     .main-panel {
         flex: 1;
