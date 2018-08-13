@@ -8,8 +8,20 @@ viewport.innerHTML = `
         height: 100vh;
         width: 100%;
     }
-    .taskbar {
+    .taskbar-area {
         height: 48px;
+        background-color: #E7F1FF;
+    }
+    .workspace-area {
+        display: flex;
+        fex-direction: row;
+        flex: 1;
+    }
+    .shortcuts {
+        min-width: 48px;
+        background-color: #E7F1FF;
+        border-right: 1px solid #A2C8FF;
+        box-sizing: border-box;
     }
     .workspace {
         display: flex;
@@ -18,8 +30,11 @@ viewport.innerHTML = `
 
     </style>
     <main>
-        <div class="taskbar"><slot name="taskbar-area"></slot></div>
-        <div class="workspace"><slot name="workspace-area"></slot></div>
+        <div class="taskbar-area"><slot name="taskbar-area"></slot></div>
+        <div class="workspace-area">
+            <div class="shortcuts"><slot name="shortcut-area"></slot></div>
+            <div class="workspace"><slot name="workspace-area"></slot></div>
+        </div>
     </main>
 `;
 

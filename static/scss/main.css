@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500");
 * {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -27,7 +36,7 @@ div {
 .toolbar input, .toolbar button {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  height: 24px;
+  height: 22px;
   min-width: 60px;
   margin-left: 4px;
 }
@@ -86,11 +95,25 @@ button[open-launcher] {
   font-weight: 400;
   font-size: 1rem;
   vertical-align: center;
-  margin-right: 8px;
 }
 
 button[open-launcher] svg {
   fill: white;
+}
+
+button.lg {
+  height: 32px;
+  border: unset;
+  min-width: 80px;
+  font-family: Montserrat, sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+button.lg.signin {
+  background: #006AFF;
+  color: #ffffff;
 }
 
 table {
@@ -127,6 +150,9 @@ table thead tr {
 }
 
 table thead tr th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-align: left;
   padding: 0 0 0 4px;
   font-weight: bold;
@@ -148,7 +174,7 @@ table tbody tr {
   border-right: none;
 }
 
-table tbody tr[draggable="true"] td {
+table tbody tr[draggable="true"]:active td {
   cursor: move;
 }
 
@@ -166,6 +192,16 @@ table tbody tr td {
   white-space: nowrap;
   padding: 0 4px;
   cursor: context-menu;
+}
+
+table tbody tr td span {
+  display: inline-block;
+  height: 16px;
+  min-width: 16px;
+  border-radius: 8px;
+  background-color: #006AFF;
+  color: #ffffff;
+  text-align: center;
 }
 
 table tbody [class*="tbl-row-"].selected {

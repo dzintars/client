@@ -1,5 +1,4 @@
 * {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
 }
 html, body, p, a {
@@ -18,7 +17,7 @@ div {
     }
     & input, button {
         box-sizing: border-box;
-        height: 24px;
+        height: 22px;
         min-width: 60px; 
         margin-left: 4px;
         &.success {

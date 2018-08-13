@@ -11,46 +11,67 @@
     </os-taskbar>
     <os-workspace slot="workspace-area">
         <div slot="toolbar" class="toolbar">
+            <button class="success">Save</button>
             <a href="#">
                 <button class="success">New</button>
             </a>
+            <button class="primary">Import</button>
             <button class="danger">Delete</button>
+            <button class="primary">Geo-Code</button>
+            <button class="primary">Remove Geo Metadata</button>
+            <button class="primary">Add Route</button>
+            <button class="primary">Export</button>
         </div>
         <table slot="main-panel">
             <colgroup>
                 <col style="width: 40px;">
-                <col style="width: 40x;">
+                <col style="width: 40px;">
+                <col style="width: 120px;">
                 <col style="width: auto;">
-                <col style="width: auto;">
+                <col style="width: 80px;">
+                <col style="width: 80px;">
                 <col style="width: 80px;">
                 <col style="width: 80px;">
             </colgroup>
             <thead>
                 <tr>
+                    <th>Sequence</th>
                     <th>ID</th>
-                    <th>Parent</th>
-                    <th>Name</th>
-                    <th>Full Name</th>
-                    <th>Permalink</th>
-                    <th>Type</th>
+                    <th>Reference</th>
+                    <th>Delivery Address</th>
+                    <th>ZIP</th>
+                    <th>Lat</th>
+                    <th>Lng</th>
+                    <th>Weight</th>
                 </tr>
             </thead>
             <tbody>
-                {{ range .Applications }}
+                {{ range .DeliveryOrders }}
                 <tr draggable="true">
+                    <td><span>{{ .RoutingSequence }}</span></td>
                     <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
-                    <td>{{ .ParentId }}</td>
-                    <td>{{ .Name }}</td>
-                    <td>{{ .FullName}}</td>
-                    <td>{{ .Permalink }}</td>
-                    <td>{{ .Type }}</td>
+                    <td>{{ .Reference }}</td>
+                    <td>{{ .DestinationAddress }}</td>
+                    <td>{{ .DestinationZip }}</td>
+                    <td>{{ .DestinationLat }}</td>
+                    <td>{{ .DestinationLng }}</td>
+                    <td>{{ .TotalWeight}}</td>
                 </tr>
                 {{ end }}
             </tbody>
         </table>
         <div slot="right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
+        <p slot="statusbar">gRPC backed example App (in development)</p>
     </os-workspace>
 
 </os-viewport>
+
+<script>
+    var markers = [
+        {{ range .DeliveryOrders }}
+        [{{ .DestinationAddress }}, {{ .RoutingSequence }}, {{ .DestinationLat }}, {{ .DestinationLng }}],
+        {{ end }}
+    ];
+</script>
 
 {{ template "footer"}}

@@ -22,9 +22,9 @@ func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 	t := time.Now()
 	fmt.Println(r.Header.Get("X-Forwarded-For"), t)
 
-	applications, err := models.ListApplications(100)
+	deliveryOrders, err := models.ListDeliveryOrders(1, 100)
 	if err != nil {
-		log.Fatalf("Error while calling ListApplications model: %v", err)
+		log.Fatalf("Error while calling GetApplication model: %v", err)
 	}
 
 	application, err := models.GetApplication(10)
@@ -33,11 +33,11 @@ func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.ExecuteTemplate(w, "index.html", struct {
-		Applications []*app.Application
-		Application  *app.Application
+		DeliveryOrders []*shipping.DeliveryOrder
+		Application    *app.Application
 	}{
-		Applications: applications.Applications,
-		Application:  application.Application,
+		DeliveryOrders: deliveryOrders.DeliveryOrders,
+		Application:    application.Application,
 	})
 }
 
@@ -45,9 +45,9 @@ func shippingGetHandler(w http.ResponseWriter, r *http.Request) {
 	t := time.Now()
 	fmt.Println("Shipping viewed by:", r.Header.Get("X-Forwarded-For"), t)
 
-	deliveryOrders, err := models.ListDeliveryOrders(1, 100)
+	applications, err := models.ListApplications(100)
 	if err != nil {
-		log.Fatalf("Error while calling GetApplication model: %v", err)
+		log.Fatalf("Error while calling ListApplications model: %v", err)
 	}
 
 	application, err := models.GetApplication(19)
@@ -56,11 +56,11 @@ func shippingGetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.ExecuteTemplate(w, "shipping.html", struct {
-		DeliveryOrders []*shipping.DeliveryOrder
-		Application    *app.Application
+		Applications []*app.Application
+		Application  *app.Application
 	}{
-		DeliveryOrders: deliveryOrders.DeliveryOrders,
-		Application:    application.Application,
+		Applications: applications.Applications,
+		Application:  application.Application,
 	})
 	fmt.Println("Shipping delivered")
 }

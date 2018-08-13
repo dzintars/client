@@ -27,6 +27,9 @@ table {
       background: $light5;
       border-bottom: 1px solid $light10;
       & th {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         text-align: left;
         padding: 0 0 0 4px;
         font-weight: bold;
@@ -45,7 +48,7 @@ table {
       height: 21px;
       border-top: 1px solid $light5;
       border-right: none;
-      &[draggable="true"] {
+      &[draggable="true"]:active {
         & td {
           cursor: move;
         }
@@ -62,6 +65,15 @@ table {
         white-space: nowrap;
         padding: 0 4px;
         cursor:context-menu;
+        & span {
+          display: inline-block;
+          height: 16px;
+          min-width: 16px;
+          border-radius: 8px;
+          background-color: #006AFF;
+          color: #ffffff;
+          text-align: center;
+        }
       }
     }
     & [class*="tbl-row-"] {

@@ -10,7 +10,6 @@ taskbar.innerHTML = `
         display: flex;
         flex-direction: row;
         height: var(--taskbar-height);
-        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2), 0 3px 3px -2px rgba(0,0,0,0.14), 0 1px 8px 0 rgba(0,0,0,0.12);
     }
     nav > div {
         display: flex;
@@ -25,12 +24,19 @@ taskbar.innerHTML = `
         font-weight: 300;
         font-size: 0.8em;
         padding: 0 6px;
+        border-bottom: 1px solid #A2C8FF;
     }
     .utilities-area {
         width: auto;
+        border-bottom: 1px solid #A2C8FF;
     }
     .controls-area {
         padding: 0 6px;
+        border-bottom: 1px solid #A2C8FF;
+    }
+    .controls-area button {
+        background-color: #006AFF;
+        color: #ffffff;
     }
     </style>
     <nav>

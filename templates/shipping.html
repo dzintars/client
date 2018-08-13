@@ -12,20 +12,22 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Stakeholder</th>
-            <th>Delivery Address</th>
-            <th>Total Weight</th>
-            <th>Sequence</th>
+            <th>Parent</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>Permalink</th>
+            <th>Type</th>
         </tr>
     </thead>
     <tbody>
-        {{ range .DeliveryOrders }}
+        {{ range .Applications }}
         <tr draggable="true">
             <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
-            <td>{{ .StakeholderId }}</td>
-            <td>{{ .DestinationAddress }}</td>
-            <td>{{ .TotalWeight}}</td>
-            <td>{{ .RoutingSequence }}</td>
+            <td>{{ .ParentId }}</td>
+            <td>{{ .Name }}</td>
+            <td>{{ .FullName}}</td>
+            <td>{{ .Permalink }}</td>
+            <td>{{ .Type }}</td>
         </tr>
         {{ end }}
     </tbody>

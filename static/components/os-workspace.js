@@ -22,6 +22,7 @@ workspace.innerHTML = `
         display: flex;
         flex: 1;
         flex-direction: row;
+        border-top: 1px solid #A2C8FF;
     }
     .sidebar {
         display: none;
@@ -32,6 +33,15 @@ workspace.innerHTML = `
     .right-panel {
         flex: 1;
     }
+    .statusbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 22px;
+        border-top: 1px solid #e6e6e6;
+        font-size: 0.7em;
+        padding: 0 6px;
+    }
 
     </style>
     <div class="workspace">
@@ -41,6 +51,7 @@ workspace.innerHTML = `
             <div class="main-panel"><slot name="main-panel"></slot></div>
             <div class="right-panel"><slot name="right-panel"></slot></div>
         </div>
+        <div class="statusbar"><slot name="statusbar"></slot></div>
     </div>
 `;
 
