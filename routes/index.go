@@ -20,7 +20,13 @@ func indexHandler(r *mux.Router) {
 
 func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 	t := time.Now()
-	fmt.Println(r.Header.Get("X-Forwarded-For"), t)
+	reqtime := t.String()
+	host := r.Header.Get("X-Forwarded-Host")
+	server := r.Header.Get("X-Forwarded-Server")
+	ua := r.Header.Get("User-Agent")
+	ffor := r.Header.Get("X-Forwarded-For")
+
+	_, err := models.CreatePageView(host, server, ua, ffor, reqtime)
 
 	deliveryOrders, err := models.ListDeliveryOrders(1, 100)
 	if err != nil {

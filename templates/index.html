@@ -1,6 +1,6 @@
 {{ template "header" . }}
 <os-viewport>
-    <os-taskbar slot="taskbar-area">
+    <os-taskbar slot="os-taskbar">
         <button slot="launcher-area" open-launcher>
             <svg class="i-icon">
                 <use xlink:href="/static/img/svg-icons/icons.svg#i-9dots"></use>
@@ -9,8 +9,8 @@
         {{ template "inc-authentication-form" . }}
         <h1 slot="main-area">{{ .Application.Name }}</h1>
     </os-taskbar>
-    <os-workspace slot="workspace-area">
-        <div slot="toolbar" class="toolbar">
+    <os-workspace slot="os-workspace">
+        <div slot="ws-toolbar" class="toolbar">
             <button class="success">Save</button>
             <a href="#">
                 <button class="success">New</button>
@@ -22,7 +22,7 @@
             <button class="primary">Add Route</button>
             <button class="primary">Export</button>
         </div>
-        <table slot="main-panel">
+        <table slot="ws-main-panel">
             <colgroup>
                 <col style="width: 40px;">
                 <col style="width: 40px;">
@@ -60,8 +60,8 @@
                 {{ end }}
             </tbody>
         </table>
-        <div slot="right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
-        <p slot="statusbar">gRPC backed example App (in development)</p>
+        <div slot="ws-right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
+        <p slot="ws-statusbar">gRPC backed example App (in development)</p>
     </os-workspace>
 
 </os-viewport>

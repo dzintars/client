@@ -12,7 +12,7 @@ if (leafletMap) {
         options: {
             iconSize:     [40, 40],
             shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
+            iconAnchor:   [20, 40],
             shadowAnchor: [4, 62],
             popupAnchor:  [-3, -76]
         }

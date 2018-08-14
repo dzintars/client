@@ -2,7 +2,7 @@ const viewport = document.createElement('template');
 
 viewport.innerHTML = `
     <style>
-    main {
+    .viewport {
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -10,32 +10,36 @@ viewport.innerHTML = `
     }
     .taskbar-area {
         height: 48px;
+        width: 100%;
         background-color: #E7F1FF;
     }
     .workspace-area {
         display: flex;
         fex-direction: row;
         flex: 1;
+        width: 100%;
     }
     .shortcuts {
+        width: 48px;
         min-width: 48px;
         background-color: #E7F1FF;
-        border-right: 1px solid #A2C8FF;
         box-sizing: border-box;
+        border-right: 1px solid #A2C8FF;
     }
     .workspace {
         display: flex;
-        height: 100%;
+        flex: 1;
+        //border: 3px solid #A2C8FF;
     }
 
     </style>
-    <main>
-        <div class="taskbar-area"><slot name="taskbar-area"></slot></div>
+    <div class="viewport">
+        <div class="taskbar-area"><slot name="os-taskbar"></slot></div>
         <div class="workspace-area">
-            <div class="shortcuts"><slot name="shortcut-area"></slot></div>
-            <div class="workspace"><slot name="workspace-area"></slot></div>
+            <div class="shortcuts"><slot name="os-shortcut"></slot></div>
+            <div class="workspace"><slot name="os-workspace"></slot></div>
         </div>
-    </main>
+    </div>
 `;
 
 customElements.define('os-viewport', class extends HTMLElement {

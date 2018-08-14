@@ -3,9 +3,9 @@ const workspace = document.createElement('template');
 workspace.innerHTML = `
     <style>
     :host {
-        height: 100%;
-        width: 100%;
+        flex: 1;
     }
+
     .workspace {
         display: flex;
         flex-direction: column;
@@ -16,22 +16,27 @@ workspace.innerHTML = `
         flex-direction: row;
         align-items: center;
         height: 32px;
+        border-bottom: 1px solid #A2C8FF;
     }
 
-    .panel-area {
+    .ws-panels {
         display: flex;
+        width: 100%;
         flex: 1;
         flex-direction: row;
-        border-top: 1px solid #A2C8FF;
+        box-sizing: border-box;
+        //border: 3px solid red;
     }
     .sidebar {
         display: none;
     }
     .main-panel {
         flex: 1;
+        //border: 3px solid green;
     }
     .right-panel {
         flex: 1;
+        //border: 3px solid orange;
     }
     .statusbar {
         display: flex;
@@ -45,13 +50,13 @@ workspace.innerHTML = `
 
     </style>
     <div class="workspace">
-        <nav class="toolbar"><slot name="toolbar"></slot></nav>
-        <div class="panel-area">
-            <div class="sidebar"><slot name="sidebar"></slot></div>
-            <div class="main-panel"><slot name="main-panel"></slot></div>
-            <div class="right-panel"><slot name="right-panel"></slot></div>
+        <nav class="toolbar"><slot name="ws-toolbar"></slot></nav>
+        <div class="ws-panels">
+            <div class="sidebar"><slot name="ws-sidebar"></slot></div>
+            <div class="main-panel"><slot name="ws-main-panel"></slot></div>
+            <div class="right-panel"><slot name="ws-right-panel"></slot></div>
         </div>
-        <div class="statusbar"><slot name="statusbar"></slot></div>
+        <div class="statusbar"><slot name="ws-statusbar"></slot></div>
     </div>
 `;
 
