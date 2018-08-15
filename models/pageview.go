@@ -3,22 +3,29 @@ package models
 import (
 	"context"
 	"log"
+	"net/http"
+	"time"
 
 	"github.com/oswee/proto/metric/go"
 )
 
 // CreatePageView ...
-func CreatePageView(XForwardedHost, XForwardedServer, UserAgent, XForwardedFor, RequestTime string) (*metric.Empty, error) {
+func CreatePageView(r *http.Request) (*metric.Empty, error) {
+	t := time.Now()
+	rtime := t.String()
+
 	cc := gLoc()
 	defer cc.Close()
 	c := metric.NewMetricClient(cc)
+	// https://mycodesmells.com/post/grpc-client-server-example
 	req := &metric.CreatePageViewRequest{
 		PageView: &metric.PageView{
-			XForwardedHost:   XForwardedHost,
-			XForwardedServer: XForwardedServer,
-			UserAgent:        UserAgent,
-			XForwardedFor:    XForwardedFor,
-			RequestTime:      RequestTime,
+			XForwardedFor:    r.Header.Get("X-Forwarded-For"),
+			XForwardedHost:   r.Host,
+			XForwardedServer: r.Header.Get("X-Forwarded-Server"),
+			Url:              r.URL.String(),
+			UserAgent:        r.UserAgent(),
+			RequestTime:      rtime,
 		}}
 
 	res, err := c.CreatePageView(context.Background(), req)

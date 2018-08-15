@@ -13,8 +13,8 @@ if (leafletMap) {
             iconSize:     [40, 40],
             shadowSize:   [50, 64],
             iconAnchor:   [20, 40],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
+            shadowAnchor: [0, 40],
+            popupAnchor:  [0, -80]
         }
     });
 

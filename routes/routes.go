@@ -10,6 +10,7 @@ func NewRouter() *mux.Router {
 	//There we are calling handlers from package routes
 	fileServer(r)   // Fileserver to serve static files
 	indexHandler(r) // Root level handler
+	dmsRouter(r)    // Delivery Management Software
 
 	return r
 }

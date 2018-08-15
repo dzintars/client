@@ -12,15 +12,38 @@
     <os-workspace slot="os-workspace">
         <div slot="ws-toolbar" class="toolbar">
             <button class="success">Save</button>
-            <a href="#">
-                <button class="success">New</button>
-            </a>
+            <button class="success" onclick="fadeIn('order-create-form')">New</button>
             <button class="primary">Import</button>
             <button class="danger">Delete</button>
             <button class="primary">Geo-Code</button>
             <button class="primary">Remove Geo Metadata</button>
             <button class="primary">Add Route</button>
             <button class="primary">Export</button>
+        </div>
+        <div slot="ws-main-panel" id="order-create-form" class="order-create-form">
+            <div class="header"><p>Add new delivery order</p></div>
+            <div class="body">
+                <form id="delivery-order-form" action="/" method="POST">
+                    <div>
+                        <input type="text" placeholder="Sequence" name="sequence" autofocus>
+                        <input type="text" placeholder="Reference" name="reference">
+                        <input type="text" placeholder="Weight" name="weight">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Address" name="address">
+                        <input type="text" placeholder="Zip" name="zip">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Lat" name="lat">
+                        <input type="text" placeholder="Lng" name="lng">
+                    </div>
+                </form>
+            </div>
+            <div class="footer">
+                <button onclick="fadeOut('order-create-form')" class="md warning">Close</button>
+                <button type="submit" form="delivery-order-form" action="#" class="md success">Add Order</button>
+            </div>
+
         </div>
         <table slot="ws-main-panel">
             <colgroup>

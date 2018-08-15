@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/oswee/client/models"
@@ -19,14 +18,11 @@ func indexHandler(r *mux.Router) {
 }
 
 func indexGetHandler(w http.ResponseWriter, r *http.Request) {
-	t := time.Now()
-	reqtime := t.String()
-	host := r.Header.Get("X-Forwarded-Host")
-	server := r.Header.Get("X-Forwarded-Server")
-	ua := r.Header.Get("User-Agent")
-	ffor := r.Header.Get("X-Forwarded-For")
 
-	_, err := models.CreatePageView(host, server, ua, ffor, reqtime)
+	_, err := models.CreatePageView(r)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
 
 	deliveryOrders, err := models.ListDeliveryOrders(1, 100)
 	if err != nil {
@@ -48,8 +44,11 @@ func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func shippingGetHandler(w http.ResponseWriter, r *http.Request) {
-	t := time.Now()
-	fmt.Println("Shipping viewed by:", r.Header.Get("X-Forwarded-For"), t)
+
+	_, err := models.CreatePageView(r)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
 
 	applications, err := models.ListApplications(100)
 	if err != nil {

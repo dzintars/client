@@ -8,6 +8,65 @@ h1, h2, h3, h4, h5, h6, p {
   padding: 0;
 }
 
+button.md {
+  height: 22px;
+}
+
+button.md.success {
+  background: #3EC300;
+  border: unset;
+  color: white;
+}
+
+button.md.warning {
+  border: 1px solid #FCBA04;
+  background: unset;
+}
+
+button.lg {
+  height: 32px;
+  border: unset;
+  min-width: 80px;
+  font-family: Montserrat, sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+button.lg.signin {
+  background: #006AFF;
+  color: #ffffff;
+}
+
+button[open-launcher] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  min-width: 48px;
+  height: 100%;
+  background-color: #006AFF;
+  cursor: pointer;
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1rem;
+  vertical-align: center;
+}
+
+button[open-launcher] svg {
+  fill: white;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -65,14 +124,18 @@ div {
   background-color: #e6e6e6;
 }
 
-.i-icon {
-  height: 22px;
-  width: 22px;
-  cursor: pointer;
-  stroke-width: 2;
+.order-create-form {
+  display: none;
+  padding: 0;
+  height: auto;
+  border-bottom: 1px solid #A2C8FF;
 }
 
-button[open-launcher] {
+.order-create-form * {
+  font-family: Montserrat, sans-serif;
+}
+
+.order-create-form .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,37 +146,54 @@ button[open-launcher] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border: none;
-  min-width: 48px;
-  height: 100%;
-  background-color: #006AFF;
+  padding: 0 12px;
+  border-bottom: 1px solid #e6e6e6;
+  height: 36px;
+}
+
+.order-create-form .body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e6e6e6;
+  height: auto;
+}
+
+.order-create-form .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 12px;
+  height: 36px;
+}
+
+.order-create-form .footer button {
+  margin-left: 6px;
   cursor: pointer;
-  color: #f2f2f2;
-  font-weight: 400;
-  font-size: 1rem;
-  vertical-align: center;
 }
 
-button[open-launcher] svg {
-  fill: white;
-}
-
-button.lg {
-  height: 32px;
-  border: unset;
-  min-width: 80px;
-  font-family: Montserrat, sans-serif;
-  font-size: 1em;
-  font-weight: 300;
-  text-transform: uppercase;
-}
-
-button.lg.signin {
-  background: #006AFF;
-  color: #ffffff;
+.i-icon {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  stroke-width: 2;
 }
 
 table {
