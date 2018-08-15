@@ -40,10 +40,9 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('order-create-form')" class="md warning">Close</button>
-                <button type="submit" form="delivery-order-form" action="#" class="md success">Add Order</button>
+                <button onclick="fadeOut('order-create-form')" class="md intense warning">Close</button>
+                <button type="submit" form="delivery-order-form" action="#" class="md intense success">Add Order</button>
             </div>
-
         </div>
         <table slot="ws-main-panel">
             <colgroup>
@@ -55,6 +54,7 @@
                 <col style="width: 80px;">
                 <col style="width: 80px;">
                 <col style="width: 80px;">
+                <col style="width: 100px;">
             </colgroup>
             <thead>
                 <tr>
@@ -62,15 +62,16 @@
                     <th>ID</th>
                     <th>Reference</th>
                     <th>Delivery Address</th>
-                    <th>ZIP</th>
+                    <th>Zip</th>
                     <th>Lat</th>
                     <th>Lng</th>
                     <th>Weight</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {{ range .DeliveryOrders }}
-                <tr draggable="true">
+                <tr draggable="true" onclick="fadeIn('order-profile')">
                     <td><span>{{ .RoutingSequence }}</span></td>
                     <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
                     <td>{{ .Reference }}</td>
@@ -79,10 +80,22 @@
                     <td>{{ .DestinationLat }}</td>
                     <td>{{ .DestinationLng }}</td>
                     <td>{{ .TotalWeight}}</td>
+                    <td class="actions">
+                        <button class="sm intense success">Edit</button>
+                        <button class="sm intense danger">Delete</button>
+                    </td>
                 </tr>
                 {{ end }}
             </tbody>
         </table>
+        <div slot="ws-right-panel" id="order-profile" class="order-profile">
+            <div class="header"><p>Order profile data will be show there</p></div>
+            <div class="body"><h1>Profile Body</h1></div>
+            <div class="footer">
+                <button onclick="fadeOut('order-profile')" class="md intense warning">Close</button>
+                <button class="md intense success">Save</button>
+            </div>
+        </div>
         <div slot="ws-right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
         <p slot="ws-statusbar">gRPC backed example App (in development)</p>
     </os-workspace>

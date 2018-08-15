@@ -32,10 +32,12 @@ workspace.innerHTML = `
     }
     .main-panel {
         flex: 1;
-        //border: 3px solid green;
+        border-right: 1px solid #A2C8FF;
     }
     .right-panel {
         flex: 1;
+        display: flex;
+        flex-direction: column;
         //border: 3px solid orange;
     }
     .statusbar {

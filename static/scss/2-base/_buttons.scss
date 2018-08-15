@@ -1,49 +1,56 @@
 button {
-    &.md {
-        height: 22px;
+    font-family: Montserrat, sans-serif;
+    &.intense {
+        color: $light;
+        border: unset;
         &.success {
             background: $green;
-            border: unset;
-            color: $light;
+        }
+        &.danger {
+            background: $red;
         }
         &.warning {
-            border: 1px solid $orange;
-            background: unset;
+            background: $orange;
         }
     }
-}
-
-button {
+    &.md {
+        height: 22px;
+        font-size: 0.8em;
+        font-weight: 300;
+    }
+    &.sm {
+        height: 16px;
+        font-size: 0.8em;
+        font-weight: 300;
+    }
     &.lg {
         height: 32px;
-        border: unset;
-        min-width: 80px;
-        font-family: Montserrat, sans-serif;
         font-size: 1em;
         font-weight: 300;
-        text-transform: uppercase;
         &.signin {
+            border: unset;
+            min-width: 80px;
+            text-transform: uppercase;
             background: #006AFF;
             color: #ffffff;
         }
     }
-}
-
-button[open-launcher] {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    min-width: 48px;
-    height: 100%;
-    background-color: $blue;
-    cursor: pointer;
-    color: $light5;
-    font-weight: 400;
-    font-size: 1rem;
-    vertical-align: center;
-    & svg {
-        fill: $light;
+    &[open-launcher] {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        min-width: 48px;
+        height: 100%;
+        background-color: $blue;
+        cursor: pointer;
+        color: $light5;
+        font-weight: 400;
+        font-size: 1rem;
+        vertical-align: center;
+        & svg {
+            fill: $light;
+        }
     }
-  }
+}

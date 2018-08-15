@@ -8,32 +8,49 @@ h1, h2, h3, h4, h5, h6, p {
   padding: 0;
 }
 
+button {
+  font-family: Montserrat, sans-serif;
+}
+
+button.intense {
+  color: white;
+  border: unset;
+}
+
+button.intense.success {
+  background: #3EC300;
+}
+
+button.intense.danger {
+  background: #E70E02;
+}
+
+button.intense.warning {
+  background: #FCBA04;
+}
+
 button.md {
   height: 22px;
+  font-size: 0.8em;
+  font-weight: 300;
 }
 
-button.md.success {
-  background: #3EC300;
-  border: unset;
-  color: white;
-}
-
-button.md.warning {
-  border: 1px solid #FCBA04;
-  background: unset;
+button.sm {
+  height: 16px;
+  font-size: 0.8em;
+  font-weight: 300;
 }
 
 button.lg {
   height: 32px;
-  border: unset;
-  min-width: 80px;
-  font-family: Montserrat, sans-serif;
   font-size: 1em;
   font-weight: 300;
-  text-transform: uppercase;
 }
 
 button.lg.signin {
+  border: unset;
+  min-width: 80px;
+  text-transform: uppercase;
   background: #006AFF;
   color: #ffffff;
 }
@@ -189,6 +206,11 @@ div {
   cursor: pointer;
 }
 
+.order-profile {
+  height: auto;
+  display: none;
+}
+
 .i-icon {
   height: 22px;
   width: 22px;
@@ -275,7 +297,7 @@ table tbody tr td {
 }
 
 table tbody tr td span {
-  display: inline-block;
+  display: block;
   height: 16px;
   min-width: 16px;
   border-radius: 8px;
