@@ -190,18 +190,18 @@ div {
   background-color: #e6e6e6;
 }
 
-.order-create-form {
+.order-create-form, .order-profile {
   display: none;
   padding: 0;
   height: auto;
   border-bottom: 1px solid #A2C8FF;
 }
 
-.order-create-form * {
+.order-create-form *, .order-profile * {
   font-family: Montserrat, sans-serif;
 }
 
-.order-create-form .header {
+.order-create-form .header, .order-profile .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,7 +217,7 @@ div {
   height: 36px;
 }
 
-.order-create-form .body {
+.order-create-form .body, .order-profile .body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,7 +232,7 @@ div {
   height: auto;
 }
 
-.order-create-form .footer {
+.order-create-form .footer, .order-profile .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,15 +250,9 @@ div {
   height: 36px;
 }
 
-.order-create-form .footer button {
+.order-create-form .footer button, .order-profile .footer button {
   margin-left: 6px;
   cursor: pointer;
-}
-
-.order-profile {
-  height: auto;
-  display: none;
-  border-bottom: 1px solid #A2C8FF;
 }
 
 .i-icon {

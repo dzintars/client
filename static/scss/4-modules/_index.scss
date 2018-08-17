@@ -41,7 +41,7 @@ div {
     }
 }
 
-.order-create-form {
+.order-create-form, .order-profile {
     display: none;
     padding: 0;
     height: auto;
@@ -76,10 +76,4 @@ div {
             cursor: pointer;
         }
     }
-}
-
-.order-profile {
-    height: auto;
-    display: none;
-    border-bottom: 1px solid #A2C8FF;
 }

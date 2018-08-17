@@ -51,7 +51,7 @@
                 <button type="submit" form="delivery-order-form" action="#" class="md intense success">Add Order</button>
             </div>
         </div>
-        <table slot="ws-main-panel">
+        <table slot="ws-main-panel" id="tbl-delivery-orders">
             <colgroup>
                 <col style="width: 40px;">
                 <col style="width: 40px;">
@@ -80,13 +80,13 @@
                 {{ range .DeliveryOrders }}
                 <tr draggable="true">
                     <td><span>{{ .RoutingSequence }}</span></td>
-                    <td ondblclick="fadeIn('order-profile')"><a href="/{{ .Id }}" >{{ .Id }}</a></td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .Reference }}</td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationAddress }}</td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationZip }}</td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationLat }}</td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationLng }}</td>
-                    <td ondblclick="fadeIn('order-profile')">{{ .TotalWeight}}</td>
+                    <td><a href="/{{ .Id }}" >{{ .Id }}</a></td>
+                    <td>{{ .Reference }}</td>
+                    <td>{{ .DestinationAddress }}</td>
+                    <td>{{ .DestinationZip }}</td>
+                    <td>{{ .DestinationLat }}</td>
+                    <td>{{ .DestinationLng }}</td>
+                    <td>{{ .TotalWeight}}</td>
                     <td class="actions">
                         <form action="/delete" method="POST">
                             <input type="hidden" value="{{ .Id }}" name="id">
@@ -99,10 +99,34 @@
         </table>
         <div slot="ws-right-panel" id="order-profile" class="order-profile">
             <div class="header"><p>Order profile data will be show there</p></div>
-            <div class="body"><h1>Profile Body</h1></div>
+            <div class="body">
+                <form id="delivery-order-profile-form" action="/update" method="POST" class="delivery-order-new" name="delivery-order-profile-form">
+                    <div>
+                        <input id="order_id" name="order_id" type="hidden" value="">
+                        <label for="sequence">Sequence</label>
+                        <input class="lg" id="sequence1" name="sequence" type="number" placeholder="0" autofocus/>
+                        <label for="reference">Reference</label>
+                        <input class="lg" id="reference1" name="reference" type="text" placeholder="REF24872"/>
+                        <label for="weight">Weight</label>
+                        <input class="lg" id="weight1" name="weight" type="number" step="0.01" placeholder="0.0"/>
+                    </div>
+                    <div>
+                        <label for="address">Delivery Address</label>
+                        <input class="lg" id="address1" name="address" type="text" placeholder="Delivery Address"/>
+                        <label for="zip">Delivery Zip</label>
+                        <input class="lg" id="zip1" name="zip" type="text" placeholder="Zip"/>
+                    </div>
+                    <div>
+                        <label for="lat">Lattitude</label>
+                        <input class="lg" id="lat1" name="lat" type="number" step="0.0001" placeholder="Lat"/>
+                        <label for="lng">Longtitude</label>
+                        <input class="lg" id="lng1" name="lng" type="number" step="0.0001" placeholder="Lng"/>
+                    </div>
+                </form>
+            </div>
             <div class="footer">
                 <button onclick="fadeOut('order-profile')" class="md intense warning">Close</button>
-                <button class="md intense success">Save</button>
+                <button  type="submit" form="delivery-order-profile-form" class="md intense success">Update</button>
             </div>
         </div>
         <div slot="ws-right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
