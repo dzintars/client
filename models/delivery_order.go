@@ -43,3 +43,18 @@ func CreateDeliveryOrder(ref string, da string, dz string, lat float64, lng floa
 	}
 	return res, nil
 }
+
+// DeleteDeliveryOrder ....
+func DeleteDeliveryOrder(id int64) (*shipping.EmptyDeliveryOrder, error) {
+	cc := gLoc()
+	defer cc.Close()
+	c := shipping.NewShippingServiceClient(cc)
+	req := &shipping.DeleteDeliveryOrderRequest{
+		Id: id,
+	}
+	res, err := c.DeleteDeliveryOrder(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Error while calling DeleteDeliveryOrder RPC: %v", err)
+	}
+	return res, nil
+}

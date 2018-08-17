@@ -84,6 +84,55 @@ button[open-launcher] svg {
   fill: white;
 }
 
+form * {
+  font-family: Montserrat, sans-serif;
+}
+
+form input.intense {
+  color: white;
+  border: unset;
+}
+
+form input.intense.success {
+  background: #3EC300;
+}
+
+form input.intense.danger {
+  background: #E70E02;
+}
+
+form input.intense.warning {
+  background: #FCBA04;
+}
+
+form input.sm {
+  height: 16px;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+form input.md {
+  height: 22px;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+form input.lg {
+  height: 28px;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+form input.xl {
+  height: 32px;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+form label {
+  font-size: 0.8em;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -209,6 +258,7 @@ div {
 .order-profile {
   height: auto;
   display: none;
+  border-bottom: 1px solid #A2C8FF;
 }
 
 .i-icon {

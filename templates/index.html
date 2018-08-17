@@ -23,19 +23,26 @@
         <div slot="ws-main-panel" id="order-create-form" class="order-create-form">
             <div class="header"><p>Add new delivery order</p></div>
             <div class="body">
-                <form id="delivery-order-form" action="/" method="POST">
+                <form id="delivery-order-form" action="/" method="POST" class="delivery-order-new" name="delivery-order-new">
                     <div>
-                        <input type="text" placeholder="Sequence" name="sequence" autofocus>
-                        <input type="text" placeholder="Reference" name="reference">
-                        <input type="text" placeholder="Weight" name="weight">
+                        <label for="sequence">Sequence</label>
+                        <input class="lg" id="sequence" name="sequence" type="number" placeholder="0" autofocus/>
+                        <label for="reference">Reference</label>
+                        <input class="lg" id="reference" name="reference" type="text" placeholder="REF24872"/>
+                        <label for="weight">Weight</label>
+                        <input class="lg" id="weight" name="weight" type="number" step="0.01" placeholder="0.0"/>
                     </div>
                     <div>
-                        <input type="text" placeholder="Address" name="address">
-                        <input type="text" placeholder="Zip" name="zip">
+                        <label for="address">Delivery Address</label>
+                        <input class="lg" id="address" name="address" type="text" placeholder="Delivery Address"/>
+                        <label for="zip">Delivery Zip</label>
+                        <input class="lg" id="zip" name="zip" type="text" placeholder="Zip"/>
                     </div>
                     <div>
-                        <input type="text" placeholder="Lat" name="lat">
-                        <input type="text" placeholder="Lng" name="lng">
+                        <label for="lat">Lattitude</label>
+                        <input class="lg" id="lat" name="lat" type="number" placeholder="Lat"/>
+                        <label for="lng">Longtitude</label>
+                        <input class="lg" id="lng" name="lng" type="number" placeholder="Lng"/>
                     </div>
                 </form>
             </div>
@@ -54,7 +61,7 @@
                 <col style="width: 80px;">
                 <col style="width: 80px;">
                 <col style="width: 80px;">
-                <col style="width: 100px;">
+                <col style="width: 60px;">
             </colgroup>
             <thead>
                 <tr>
@@ -71,18 +78,20 @@
             </thead>
             <tbody>
                 {{ range .DeliveryOrders }}
-                <tr draggable="true" onclick="fadeIn('order-profile')">
+                <tr draggable="true">
                     <td><span>{{ .RoutingSequence }}</span></td>
-                    <td><a href="/{{ .Id }}">{{ .Id }}</a></td>
-                    <td>{{ .Reference }}</td>
-                    <td>{{ .DestinationAddress }}</td>
-                    <td>{{ .DestinationZip }}</td>
-                    <td>{{ .DestinationLat }}</td>
-                    <td>{{ .DestinationLng }}</td>
-                    <td>{{ .TotalWeight}}</td>
+                    <td ondblclick="fadeIn('order-profile')"><a href="/{{ .Id }}" >{{ .Id }}</a></td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .Reference }}</td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationAddress }}</td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationZip }}</td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationLat }}</td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .DestinationLng }}</td>
+                    <td ondblclick="fadeIn('order-profile')">{{ .TotalWeight}}</td>
                     <td class="actions">
-                        <button class="sm intense success">Edit</button>
-                        <button class="sm intense danger">Delete</button>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" value="{{ .Id }}" name="id">
+                            <input type="submit" value="Delete" class="sm intense danger">
+                        </form>
                     </td>
                 </tr>
                 {{ end }}
