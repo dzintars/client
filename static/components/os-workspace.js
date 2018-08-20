@@ -45,7 +45,8 @@ workspace.innerHTML = `
         flex-direction: row;
         align-items: center;
         height: 22px;
-        border-top: 1px solid #e6e6e6;
+        border-top: 1px solid #A2C8FF;
+        background-color: #E7F1FF;
         font-size: 0.7em;
         padding: 0 6px;
     }

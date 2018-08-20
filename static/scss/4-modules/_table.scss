@@ -1,6 +1,6 @@
 table {
   table-layout: fixed;
-  overflow: auto;
+  overflow: scroll;
   font-size: 0.8em;
   border-collapse: collapse; //Should be defined for column border styling
   border-bottom: 1px solid $light10;

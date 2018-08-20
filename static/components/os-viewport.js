@@ -2,11 +2,18 @@ const viewport = document.createElement('template');
 
 viewport.innerHTML = `
     <style>
-    .viewport {
+    :host {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        height: 100vh;
         width: 100%;
+    }
+    .viewport {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
     }
     .taskbar-area {
         height: 48px;

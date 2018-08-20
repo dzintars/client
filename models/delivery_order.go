@@ -81,3 +81,20 @@ func DeleteDeliveryOrder(id int64) (*shipping.EmptyDeliveryOrder, error) {
 	}
 	return res, nil
 }
+
+// GeoCodeDeliveryOrder ...
+func GeoCodeDeliveryOrder(id, stakeholder int64, address string) (*shipping.DeliveryOrder, error) {
+	cc := gLoc()
+	defer cc.Close()
+	c := shipping.NewShippingServiceClient(cc)
+	req := &shipping.GeoCodeDeliveryOrderRequest{
+		Id:            id,
+		StakeholderId: stakeholder,
+		Address:       address,
+	}
+	res, err := c.GeoCodeDeliveryOrder(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Error while calling GeoCodeDeliveryOrder RPC: %v", err)
+	}
+	return res, nil
+}

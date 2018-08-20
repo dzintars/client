@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500");
+html, body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 * {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -190,18 +202,18 @@ div {
   background-color: #e6e6e6;
 }
 
-.order-create-form, .order-profile {
+.order-create-form, .order-profile, .orders-import-form, .orders-save, .orders-geocode {
   display: none;
   padding: 0;
   height: auto;
   border-bottom: 1px solid #A2C8FF;
 }
 
-.order-create-form *, .order-profile * {
+.order-create-form *, .order-profile *, .orders-import-form *, .orders-save *, .orders-geocode * {
   font-family: Montserrat, sans-serif;
 }
 
-.order-create-form .header, .order-profile .header {
+.order-create-form .header, .order-profile .header, .orders-import-form .header, .orders-save .header, .orders-geocode .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,7 +229,7 @@ div {
   height: 36px;
 }
 
-.order-create-form .body, .order-profile .body {
+.order-create-form .body, .order-profile .body, .orders-import-form .body, .orders-save .body, .orders-geocode .body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,7 +244,7 @@ div {
   height: auto;
 }
 
-.order-create-form .footer, .order-profile .footer {
+.order-create-form .footer, .order-profile .footer, .orders-import-form .footer, .orders-save .footer, .orders-geocode .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,9 +262,15 @@ div {
   height: 36px;
 }
 
-.order-create-form .footer button, .order-profile .footer button {
+.order-create-form .footer button, .order-profile .footer button, .orders-import-form .footer button, .orders-save .footer button, .orders-geocode .footer button {
   margin-left: 6px;
   cursor: pointer;
+}
+
+.order-create-form textarea, .order-profile textarea, .orders-import-form textarea, .orders-save textarea, .orders-geocode textarea {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .i-icon {
@@ -264,7 +282,7 @@ div {
 
 table {
   table-layout: fixed;
-  overflow: auto;
+  overflow: scroll;
   font-size: 0.8em;
   border-collapse: collapse;
   border-bottom: 1px solid #e6e6e6;

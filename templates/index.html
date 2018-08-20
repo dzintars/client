@@ -11,11 +11,11 @@
     </os-taskbar>
     <os-workspace slot="os-workspace">
         <div slot="ws-toolbar" class="toolbar">
-            <button class="success">Save</button>
+            <button class="success" onclick="fadeIn('orders-save')">Save</button>
             <button class="success" onclick="fadeIn('order-create-form')">New</button>
-            <button class="primary">Import</button>
-            <button class="danger">Delete</button>
-            <button class="primary">Geo-Code</button>
+            <button class="primary" onclick="fadeIn('orders-import-form')">Import</button>
+            <button class="danger" onclick="toggle('orders-delete-template', 'ws-main-panelx')">Delete</button>
+            <button class="primary" onclick="fadeIn('orders-geocode')">Geo-Code</button>
             <button class="primary">Remove Geo Metadata</button>
             <button class="primary">Add Route</button>
             <button class="primary">Export</button>
@@ -47,10 +47,70 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('order-create-form')" class="md intense warning">Close</button>
+                <button onclick="fadeOut('order-create-form')" class="md intense warning">Cancel</button>
                 <button type="submit" form="delivery-order-form" action="#" class="md intense success">Add Order</button>
             </div>
         </div>
+
+
+
+        <div slot="ws-main-panel" id="orders-import-form" class="orders-import-form">
+            <div class="header"><p>Import or paste delivery orders</p></div>
+            <div class="body">
+                <form id="delivery-orders-import" action="/import" method="POST" class="delivery-orders-import" name="delivery-orders-import">
+                    <textarea name="orders-ta" id="orders-ta" cols="200" rows="10" placeholder="Reference,Address,Zip,Weight" autofocus></textarea>
+                </form>
+            </div>
+            <div class="footer">
+                <button onclick="fadeOut('orders-import-form')" class="md intense warning">Cancel</button>
+                <button type="submit" form="delivery-orders-import" action="#" class="md intense success">Import</button>
+            </div>
+        </div>
+
+
+
+        <div slot="ws-main-panel" id="orders-save" class="orders-save">
+            <div class="header"><p>Import or paste delivery orders</p></div>
+            <div class="body">
+                <h1>Save project</h1><br>
+                <p>To save and reuse your data, you should be registered and signed in.</p>
+            </div>
+            <div class="footer">
+                <button onclick="fadeOut('orders-save')" class="md intense warning">Cancel</button>
+                <button type="submit" form="orders-save" action="#" class="md intense success">Save</button>
+            </div>
+        </div>
+
+
+
+        <div slot="ws-main-panel" id="orders-geocode" class="orders-geocode">
+            <div class="header">
+                <p>Get a location data from selected data provider</p>
+            </div>
+            <div class="body">
+                <form action="/gcode" method="POST">
+                    <div>
+                        <input type="radio" id="google-api" name="geo" value="google" checked />
+                        <label for="google-api">Google Maps API</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="bing-api" name="geo" value="bing" />
+                        <label for="bing-api">Bing Maps APIing</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="osm-api" name="geo" value="osm" />
+                        <label for="osm-api">Open Street Maps API</label>
+                    </div>
+                </form>
+            </div>
+            <div class="footer">
+                <button onclick="fadeOut('orders-geocode')" class="md intense warning">Cancel</button>
+                <button type="submit" form="orders-geocode" action="#" class="md intense success">Geo-Code</button>
+            </div>
+        </div>
+
+
+
         <table slot="ws-main-panel" id="tbl-delivery-orders">
             <colgroup>
                 <col style="width: 40px;">
@@ -102,7 +162,7 @@
             <div class="body">
                 <form id="delivery-order-profile-form" action="/update" method="POST" class="delivery-order-new" name="delivery-order-profile-form">
                     <div>
-                        <input id="order_id" name="order_id" type="hidden" value="">
+                        <input id="order_id" name="order_id" type="hidden">
                         <label for="sequence">Sequence</label>
                         <input class="lg" id="sequence1" name="sequence" type="number" placeholder="0" autofocus/>
                         <label for="reference">Reference</label>
@@ -118,14 +178,15 @@
                     </div>
                     <div>
                         <label for="lat">Lattitude</label>
-                        <input class="lg" id="lat1" name="lat" type="number" step="0.0001" placeholder="Lat"/>
+                        <input class="lg" id="lat1" name="lat" type="number" step="0.000001" placeholder="Lat"/>
                         <label for="lng">Longtitude</label>
-                        <input class="lg" id="lng1" name="lng" type="number" step="0.0001" placeholder="Lng"/>
+                        <input class="lg" id="lng1" name="lng" type="number" step="0.000001" placeholder="Lng"/>
                     </div>
                 </form>
             </div>
             <div class="footer">
                 <button onclick="fadeOut('order-profile')" class="md intense warning">Close</button>
+                <button  type="submit" form="delivery-order-profile-form" class="md intense success" formaction="/geocode">Geo Code</button>
                 <button  type="submit" form="delivery-order-profile-form" class="md intense success">Update</button>
             </div>
         </div>
@@ -134,6 +195,13 @@
     </os-workspace>
 
 </os-viewport>
+
+<template id="orders-delete-template">
+    <div class="orders-delete" id="slot-test">
+        <h1>Delete all orders</h1>
+        <p>cloneNode template test</p>
+    </div>
+</template>
 
 <script>
     var markers = [
