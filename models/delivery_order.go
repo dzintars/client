@@ -98,3 +98,21 @@ func GeoCodeDeliveryOrder(id, stakeholder int64, address string) (*shipping.Deli
 	}
 	return res, nil
 }
+
+// BatchGeocode ...
+func BatchGeocode(stakeholderID int64) {
+	cc := gLoc()
+	defer cc.Close()
+	c := shipping.NewShippingServiceClient(cc)
+	req := &shipping.ListDeliveryOrdersRequest{}
+	req.StakeholderId = stakeholderID
+	req.ResultPerPage = 100
+	res, err := c.ListDeliveryOrders(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Error while calling ListApplications RPC: %v", err)
+	}
+	orders := res.DeliveryOrders
+	for _, do := range orders {
+		GeoCodeDeliveryOrder(do.Id, stakeholderID, do.DestinationAddress)
+	}
+}

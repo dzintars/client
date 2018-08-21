@@ -14,6 +14,7 @@ func dmsRouter(r *mux.Router) {
 	r.HandleFunc("/delete", deleteDeliveryOrderPostHandler).Methods("POST")
 	r.HandleFunc("/update", updateDeliveryOrderPostHandler).Methods("POST")
 	r.HandleFunc("/geocode", googleGeoCode).Methods("POST")
+	r.HandleFunc("/batchgeocode", batchGeoCode).Methods("POST")
 }
 
 func createDeliveryOrderPostHandler(w http.ResponseWriter, r *http.Request) {
@@ -103,10 +104,16 @@ func googleGeoCode(w http.ResponseWriter, r *http.Request) {
 		log.Println(err.Error)
 	}
 
-	// deliveryOrders, err := models.ListDeliveryOrders(1, 100)
-	// if err != nil {
-	// 	log.Fatalf("Error while calling GetApplication model: %v", err)
-	// }
+	http.Redirect(w, r, "/", 302)
+}
 
+func batchGeoCode(w http.ResponseWriter, r *http.Request) {
+	models.CreatePageView(r)
+	err := r.ParseForm()
+	if err != nil {
+		log.Println(err.Error)
+	}
+	sID, _ := strconv.ParseInt(r.FormValue("stakeholder_id"), 10, 64)
+	models.BatchGeocode(sID)
 	http.Redirect(w, r, "/", 302)
 }

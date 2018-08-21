@@ -23,7 +23,7 @@
         <div slot="ws-main-panel" id="order-create-form" class="order-create-form">
             <div class="header"><p>Add new delivery order</p></div>
             <div class="body">
-                <form id="delivery-order-form" action="/" method="POST" class="delivery-order-new" name="delivery-order-new">
+                <form name="delivery-order-new" id="delivery-order-form" action="/" method="POST" class="delivery-order-new">
                     <div>
                         <label for="sequence">Sequence</label>
                         <input class="lg" id="sequence" name="sequence" type="number" placeholder="0" autofocus/>
@@ -88,24 +88,25 @@
                 <p>Get a location data from selected data provider</p>
             </div>
             <div class="body">
-                <form action="/gcode" method="POST">
+                <form name="orders-batch-geocode-form" id="orders-batch-geocode-form" action="/batchgeocode" method="POST">
+                    <input type="hidden" value="1" name="stakeholder_id" id="stakeholder_id">
                     <div>
-                        <input type="radio" id="google-api" name="geo" value="google" checked />
+                        <input type="radio" id="google-api" name="geo" value="google" checked disabled />
                         <label for="google-api">Google Maps API</label>
                     </div>
                     <div>
-                        <input type="radio" id="bing-api" name="geo" value="bing" />
-                        <label for="bing-api">Bing Maps APIing</label>
+                        <input type="radio" id="bing-api" name="geo" value="bing" disabled />
+                        <label for="bing-api">Bing Maps API</label>
                     </div>
                     <div>
-                        <input type="radio" id="osm-api" name="geo" value="osm" />
+                        <input type="radio" id="osm-api" name="geo" value="osm" disabled />
                         <label for="osm-api">Open Street Maps API</label>
                     </div>
                 </form>
             </div>
             <div class="footer">
                 <button onclick="fadeOut('orders-geocode')" class="md intense warning">Cancel</button>
-                <button type="submit" form="orders-geocode" action="#" class="md intense success">Geo-Code</button>
+                <button type="submit" form="orders-batch-geocode-form" class="md intense success">Geo-Code</button>
             </div>
         </div>
 
