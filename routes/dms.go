@@ -96,6 +96,7 @@ func googleGeoCode(w http.ResponseWriter, r *http.Request) {
 		log.Println(err.Error)
 	}
 	id, _ := strconv.ParseInt(r.FormValue("order_id"), 10, 64)
+	// ToDO: Change hardcoded stakeholder ID to form value
 	stakeholder, _ := strconv.ParseInt(r.FormValue("1"), 10, 64)
 	da := r.FormValue("address")
 

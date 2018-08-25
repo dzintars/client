@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Oswee {{ .Application.Name }}</title>
 
-    <meta name="description" content="Online shopping and selling of goods and services, managing customers, suppliers, shipping services and orders, NVOCC, order tracking, accounting, postal services, direct mail and many more.">
+    <meta name="description" content="{{ .Application.FullName }}">
     <meta name="keywords" content="Oswee, Oswee.com, NVOCC, Direct Mail, Postal Services, ERP, CRM, Shipping, Fleet Management">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" type="text/css" href="/static/scss/main.css">
 
@@ -21,6 +21,8 @@
     crossorigin=""></script>
 
     <script src="/static/js/leaflet/makimarkers.js"></script>
+    <script src="/static/js/leaflet/heatlayer.js"></script>
+    <script src="/static/js/leaflet/Map.ContextMenu.js"></script>
 
     <script src="/static/components/os-viewport.js" type="module"></script>
     <script src="/static/components/os-taskbar.js" type="module"></script>

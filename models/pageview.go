@@ -2,6 +2,7 @@ package models
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -13,7 +14,7 @@ import (
 func CreatePageView(r *http.Request) (*metric.Empty, error) {
 	t := time.Now()
 	rtime := t.String()
-
+	fmt.Println(r.UserAgent())
 	cc := gLoc()
 	defer cc.Close()
 	c := metric.NewMetricClient(cc)

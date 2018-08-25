@@ -207,9 +207,24 @@
 <script>
     var markers = [
         {{ range .DeliveryOrders }}
-        [{{ .DestinationAddress }}, {{ .RoutingSequence }}, {{ .DestinationLat }}, {{ .DestinationLng }}],
+        [{{ .DestinationAddress }}, {{ .RoutingSequence }}, {{ .DestinationLat }}, {{ .DestinationLng }}, {{ .Id }}],
         {{ end }}
     ];
+
+    // var geojsonx = [
+    //     {{ range .DeliveryOrders }}
+    //     {
+    //         "type": "Feature",
+    //         "geometry": {
+    //             "type": "Point",
+    //             "coordinates": [{{.DestinationLat}},{{.DestinationLng}}]
+    //         },
+    //         "properties": {
+    //             "name": "{{ .RoutingSequence }}",
+    //             "title": "{{ .DestinationAddress }}"
+    //         },
+    //     {{ end }}
+    //     }];
 </script>
 
 {{ template "footer"}}
