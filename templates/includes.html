@@ -9,7 +9,7 @@
     <meta name="keywords" content="Oswee, Oswee.com, NVOCC, Direct Mail, Postal Services, ERP, CRM, Shipping, Fleet Management">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" href="/static/scss/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.oswee.com/static/dist/css/main.min.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
     integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
@@ -51,5 +51,7 @@
 {{end}}
 
 {{ define "inc-authentication-form" }}
-<a slot="controls-area" href="/signin"><button class="lg signin">Sign In</button></a>
+<a slot="controls-area" href="/signin">
+    <button class="lg fill primary">Sign In</button>
+</a>
 {{ end }}

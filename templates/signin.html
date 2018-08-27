@@ -1,0 +1,10 @@
+{{ template "header" . }}
+<h1>Use your credentials to sign in.</h1>
+<form action="/signin" method="POST">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <input type="submit" name="signin" id="signin" value="Sign In" class="md fill primary">
+</form>
+<a href="/forgot-credentials">Forgot credentials</a>
+<a href="/signup">Sign Up</a>
+{{ template "footer"}}

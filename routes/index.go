@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -15,9 +14,22 @@ import (
 func indexHandler(r *mux.Router) {
 	r.HandleFunc("/", indexGetHandler).Methods("GET")
 	r.HandleFunc("/shipping", shippingGetHandler).Methods("GET")
+	r.HandleFunc("/signin", signinGetHandler).Methods("GET")
+	r.HandleFunc("/signup", signupGetHandler).Methods("GET")
 }
 
+// func setupResponse(w *http.ResponseWriter, req *http.Request) {
+// 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+// 	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+// 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+// }
+
 func indexGetHandler(w http.ResponseWriter, r *http.Request) {
+
+	// setupResponse(&w, r)
+	// if (*r).Method == "OPTIONS" {
+	// 	return
+	// }
 
 	_, err := models.CreatePageView(r)
 	if err != nil {
@@ -67,5 +79,42 @@ func shippingGetHandler(w http.ResponseWriter, r *http.Request) {
 		Applications: applications.Applications,
 		Application:  application.Application,
 	})
-	fmt.Println("Shipping delivered")
+}
+
+func signinGetHandler(w http.ResponseWriter, r *http.Request) {
+	// ToDO: Log handler execution time
+	_, err := models.CreatePageView(r)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
+
+	application, err := models.GetApplication(11)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
+
+	utils.ExecuteTemplate(w, "signin.html", struct {
+		Application *app.Application
+	}{
+		Application: application.Application,
+	})
+}
+
+func signupGetHandler(w http.ResponseWriter, r *http.Request) {
+	// ToDO: Log handler execution time
+	_, err := models.CreatePageView(r)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
+
+	application, err := models.GetApplication(12)
+	if err != nil {
+		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
+
+	utils.ExecuteTemplate(w, "signup.html", struct {
+		Application *app.Application
+	}{
+		Application: application.Application,
+	})
 }

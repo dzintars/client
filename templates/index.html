@@ -3,7 +3,8 @@
     <os-taskbar slot="os-taskbar">
         <button slot="launcher-area" open-launcher>
             <svg class="i-icon">
-                <use xlink:href="/static/img/svg-icons/icons.svg#i-9dots"></use>
+                <!-- If CDN is used SVG will not be loaded due some use tag limitations -->
+                <use href="/static/img/svg/icons.svg#i-9dots"></use>
             </svg>
         </button>
         {{ template "inc-authentication-form" . }}
@@ -11,14 +12,14 @@
     </os-taskbar>
     <os-workspace slot="os-workspace">
         <div slot="ws-toolbar" class="toolbar">
-            <button class="success" onclick="fadeIn('orders-save')">Save</button>
-            <button class="success" onclick="fadeIn('order-create-form')">New</button>
-            <button class="primary" onclick="fadeIn('orders-import-form')">Import</button>
-            <button class="danger" onclick="toggle('orders-delete-template', 'ws-main-panelx')">Delete</button>
-            <button class="primary" onclick="fadeIn('orders-geocode')">Geo-Code</button>
-            <button class="primary">Remove Geo Metadata</button>
-            <button class="primary">Add Route</button>
-            <button class="primary">Export</button>
+            <button class="md outline success" onclick="fadeIn('orders-save')">Save</button>
+            <button class="md outline success" onclick="fadeIn('order-create-form')">New</button>
+            <button class="md outline primary" onclick="fadeIn('orders-import-form')">Import</button>
+            <button class="md outline danger" onclick="toggle('orders-delete-template', 'ws-main-panelx')">Delete</button>
+            <button class="md outline primary" onclick="fadeIn('orders-geocode')">Geo-Code</button>
+            <button class="md outline light">Remove Geo Metadata</button>
+            <button class="md outline light">Add Route</button>
+            <button class="md outline light">Export</button>
         </div>
         <div slot="ws-main-panel" id="order-create-form" class="order-create-form">
             <div class="header"><p>Add new delivery order</p></div>
@@ -47,8 +48,8 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('order-create-form')" class="md intense warning">Cancel</button>
-                <button type="submit" form="delivery-order-form" action="#" class="md intense success">Add Order</button>
+                <button onclick="fadeOut('order-create-form')" class="md fill warning">Cancel</button>
+                <button type="submit" form="delivery-order-form" action="#" class="md fill success">Add Order</button>
             </div>
         </div>
 
@@ -62,8 +63,8 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('orders-import-form')" class="md intense warning">Cancel</button>
-                <button type="submit" form="delivery-orders-import" action="#" class="md intense success">Import</button>
+                <button onclick="fadeOut('orders-import-form')" class="md fill warning">Cancel</button>
+                <button type="submit" form="delivery-orders-import" action="#" class="md fill success">Import</button>
             </div>
         </div>
 
@@ -76,8 +77,8 @@
                 <p>To save and reuse your data, you should be registered and signed in.</p>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('orders-save')" class="md intense warning">Cancel</button>
-                <button type="submit" form="orders-save" action="#" class="md intense success">Save</button>
+                <button onclick="fadeOut('orders-save')" class="md fill warning">Cancel</button>
+                <button type="submit" form="orders-save" action="#" class="md fill success">Save</button>
             </div>
         </div>
 
@@ -105,8 +106,8 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('orders-geocode')" class="md intense warning">Cancel</button>
-                <button type="submit" form="orders-batch-geocode-form" class="md intense success">Geo-Code</button>
+                <button onclick="fadeOut('orders-geocode')" class="md fill warning">Cancel</button>
+                <button type="submit" form="orders-batch-geocode-form" class="md fill success">Geo-Code</button>
             </div>
         </div>
 
@@ -151,7 +152,7 @@
                     <td class="actions">
                         <form action="/delete" method="POST">
                             <input type="hidden" value="{{ .Id }}" name="id">
-                            <input type="submit" value="Delete" class="sm intense danger">
+                            <input type="submit" value="Delete" class="sm fill danger">
                         </form>
                     </td>
                 </tr>
@@ -186,13 +187,13 @@
                 </form>
             </div>
             <div class="footer">
-                <button onclick="fadeOut('order-profile')" class="md intense warning">Close</button>
-                <button  type="submit" form="delivery-order-profile-form" class="md intense success" formaction="/geocode">Geo Code</button>
-                <button  type="submit" form="delivery-order-profile-form" class="md intense success">Update</button>
+                <button onclick="fadeOut('order-profile')" class="md fill warning">Close</button>
+                <button  type="submit" form="delivery-order-profile-form" class="md fill success" formaction="/geocode">Geo Code</button>
+                <button  type="submit" form="delivery-order-profile-form" class="md fill success">Update</button>
             </div>
         </div>
         <div slot="ws-right-panel" id="mapid" style="height: 100%; width: 100%;"></div>
-        <p slot="ws-statusbar">gRPC backed example App (in development)</p>
+        <p slot="ws-statusbar">gRPC backend example App (in development)</p>
     </os-workspace>
 
 </os-viewport>
