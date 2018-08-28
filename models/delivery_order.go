@@ -4,15 +4,16 @@ import (
 	"context"
 	"log"
 
-	"github.com/oswee/proto/shipping/go"
+	pb "github.com/oswee/stubs"
+	dms "github.com/oswee/stubs/dms/v1"
 )
 
 // ListDeliveryOrders returns all delivery orders of requested stakeholder
-func ListDeliveryOrders(stakeholderID int64, resultsPerPage int32) (*shipping.ListDeliveryOrdersResponse, error) {
+func ListDeliveryOrders(stakeholderID int64, resultsPerPage int32) (*dms.ListDeliveryOrdersResponse, error) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.ListDeliveryOrdersRequest{}
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.ListDeliveryOrdersRequest{}
 	req.StakeholderId = stakeholderID
 	req.ResultPerPage = resultsPerPage
 	res, err := c.ListDeliveryOrders(context.Background(), req)
@@ -23,12 +24,12 @@ func ListDeliveryOrders(stakeholderID int64, resultsPerPage int32) (*shipping.Li
 }
 
 //CreateDeliveryOrder .....
-func CreateDeliveryOrder(ref string, da string, dz string, lat float64, lng float64, tw float64, rs int64) (*shipping.DeliveryOrder, error) {
+func CreateDeliveryOrder(ref string, da string, dz string, lat float64, lng float64, tw float64, rs int64) (*dms.DeliveryOrder, error) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.CreateDeliveryOrderRequest{
-		DeliveryOrder: &shipping.DeliveryOrder{
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.CreateDeliveryOrderRequest{
+		DeliveryOrder: &dms.DeliveryOrder{
 			Reference:          ref,
 			DestinationAddress: da,
 			DestinationZip:     dz,
@@ -45,12 +46,12 @@ func CreateDeliveryOrder(ref string, da string, dz string, lat float64, lng floa
 }
 
 //UpdateDeliveryOrder .....
-func UpdateDeliveryOrder(ref string, da string, dz string, lat float64, lng float64, tw float64, rs int64, id int64) (*shipping.DeliveryOrder, error) {
+func UpdateDeliveryOrder(ref string, da string, dz string, lat float64, lng float64, tw float64, rs int64, id int64) (*dms.DeliveryOrder, error) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.UpdateDeliveryOrderRequest{
-		DeliveryOrder: &shipping.DeliveryOrder{
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.UpdateDeliveryOrderRequest{
+		DeliveryOrder: &dms.DeliveryOrder{
 			Reference:          ref,
 			DestinationAddress: da,
 			DestinationZip:     dz,
@@ -68,11 +69,11 @@ func UpdateDeliveryOrder(ref string, da string, dz string, lat float64, lng floa
 }
 
 // DeleteDeliveryOrder ....
-func DeleteDeliveryOrder(id int64) (*shipping.EmptyDeliveryOrder, error) {
+func DeleteDeliveryOrder(id int64) (*pb.Empty, error) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.DeleteDeliveryOrderRequest{
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.DeleteDeliveryOrderRequest{
 		Id: id,
 	}
 	res, err := c.DeleteDeliveryOrder(context.Background(), req)
@@ -83,11 +84,11 @@ func DeleteDeliveryOrder(id int64) (*shipping.EmptyDeliveryOrder, error) {
 }
 
 // GeoCodeDeliveryOrder ...
-func GeoCodeDeliveryOrder(id, stakeholder int64, address string) (*shipping.DeliveryOrder, error) {
+func GeoCodeDeliveryOrder(id, stakeholder int64, address string) (*dms.DeliveryOrder, error) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.GeoCodeDeliveryOrderRequest{
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.GeoCodeDeliveryOrderRequest{
 		Id:            id,
 		StakeholderId: stakeholder,
 		Address:       address,
@@ -103,8 +104,8 @@ func GeoCodeDeliveryOrder(id, stakeholder int64, address string) (*shipping.Deli
 func BatchGeocode(stakeholderID int64) {
 	cc := gLoc()
 	defer cc.Close()
-	c := shipping.NewShippingServiceClient(cc)
-	req := &shipping.ListDeliveryOrdersRequest{}
+	c := dms.NewShippingServiceClient(cc)
+	req := &dms.ListDeliveryOrdersRequest{}
 	req.StakeholderId = stakeholderID
 	req.ResultPerPage = 100
 	res, err := c.ListDeliveryOrders(context.Background(), req)

@@ -7,8 +7,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/oswee/client/models"
 	"github.com/oswee/client/utils"
-	app "github.com/oswee/proto/application/go"
-	"github.com/oswee/proto/shipping/go"
+	app "github.com/oswee/stubs/app/v1"
+	dms "github.com/oswee/stubs/dms/v1"
 )
 
 func indexHandler(r *mux.Router) {
@@ -47,7 +47,7 @@ func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.ExecuteTemplate(w, "index.html", struct {
-		DeliveryOrders []*shipping.DeliveryOrder
+		DeliveryOrders []*dms.DeliveryOrder
 		Application    *app.Application
 	}{
 		DeliveryOrders: deliveryOrders.DeliveryOrders,

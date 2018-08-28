@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	app "github.com/oswee/proto/application/go"
+	app "github.com/oswee/stubs/app/v1"
 )
 
 // GetApplication returns application by requested ID

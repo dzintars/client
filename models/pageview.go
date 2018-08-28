@@ -6,11 +6,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oswee/proto/metric/go"
+	pb "github.com/oswee/stubs"
+	metric "github.com/oswee/stubs/metric/v1"
 )
 
 // CreatePageView ...
-func CreatePageView(r *http.Request) (*metric.Empty, error) {
+func CreatePageView(r *http.Request) (*pb.Empty, error) {
 	t := time.Now()
 	rtime := t.String()
 	//fmt.Println(r.UserAgent())
