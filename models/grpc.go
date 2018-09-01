@@ -4,11 +4,18 @@ import (
 	"log"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 func gLoc() (cc *grpc.ClientConn) {
-	// First we create the connection:
-	cc, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+
+	// Create the client TLS credentials
+	creds, err := credentials.NewClientTLSFromFile("cert/server.crt", "")
+	if err != nil {
+		log.Fatalf("could not load tls cert: %s", err)
+	}
+	// Initiate a connection with the server
+	cc, err = grpc.Dial("localhost:8080", grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatalf("Could not connect: %v", err)
 	}

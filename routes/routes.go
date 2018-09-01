@@ -11,6 +11,7 @@ func NewRouter() *mux.Router {
 	fileServer(r)   // Fileserver to serve static files
 	indexHandler(r) // Root level handler
 	dmsRouter(r)    // Delivery Management Software
+	signupRouter(r) // User Signup service
 
 	return r
 }

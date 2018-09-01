@@ -99,22 +99,3 @@ func signinGetHandler(w http.ResponseWriter, r *http.Request) {
 		Application: application.Application,
 	})
 }
-
-func signupGetHandler(w http.ResponseWriter, r *http.Request) {
-	// ToDO: Log handler execution time
-	_, err := models.CreatePageView(r)
-	if err != nil {
-		log.Fatalf("Error while calling GetApplication model: %v", err)
-	}
-
-	application, err := models.GetApplication(12)
-	if err != nil {
-		log.Fatalf("Error while calling GetApplication model: %v", err)
-	}
-
-	utils.ExecuteTemplate(w, "signup.html", struct {
-		Application *app.Application
-	}{
-		Application: application.Application,
-	})
-}

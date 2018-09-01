@@ -2,6 +2,7 @@ package models
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -31,6 +32,7 @@ func CreatePageView(r *http.Request) (*pb.Empty, error) {
 
 	res, err := c.CreatePageView(context.Background(), req)
 	if err != nil {
+		fmt.Println(r.Header.Get("X-Forwarded-For"), r.UserAgent())
 		log.Fatalf("Error while calling CreatePageView RPC: %v", err)
 	}
 	return res, nil

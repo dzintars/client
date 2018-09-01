@@ -1,11 +1,11 @@
 {{ template "header" . }}
 <h1>Create Oswee Passport</h1>
-<form action="/signin" method="POST">
-    <input type="email" placeholder="example@domain.com">
-    <input type="text" placeholder="First Name">
-    <input type="text" placeholder="Last Name">
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
+<form action="/signup" method="POST">
+    <input type="text" placeholder="First Name" name="fname">
+    <input type="text" placeholder="Last Name" name="lname">
+    <input type="email" placeholder="example@domain.com" name="email">
+    <input type="text" placeholder="Username" name="uname">
+    <input type="password" placeholder="Password" name="password">
     <input type="password" placeholder="Repeat Password">
     <input type="submit" name="signup" id="signup" value="Sign Up">
 </form>
