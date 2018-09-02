@@ -159,6 +159,30 @@
                 {{ end }}
             </tbody>
         </table>
+
+        <table slot="ws-main-panel" id="tbl-routes">
+            <colgroup>
+                <col style="width: 40px;">
+                <col style="width: auto;">
+                <col style="width: 120px;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .Routes }}
+                <tr>
+                    <td><a href="/{{ .Id }}" >{{ .Id }}</a></td>
+                    <td>{{ .Name }}</td>
+                    <td>{{ .CreateTime }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
         <div slot="ws-right-panel" id="order-profile" class="order-profile">
             <div class="header"><p>Order profile data will be show there</p></div>
             <div class="body">

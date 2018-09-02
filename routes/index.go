@@ -9,6 +9,7 @@ import (
 	"github.com/oswee/client/utils"
 	app "github.com/oswee/stubs/app/v1"
 	dms "github.com/oswee/stubs/dms/v1"
+	route "github.com/oswee/stubs/route/v1"
 )
 
 func indexHandler(r *mux.Router) {
@@ -18,27 +19,22 @@ func indexHandler(r *mux.Router) {
 	r.HandleFunc("/signup", signupGetHandler).Methods("GET")
 }
 
-// func setupResponse(w *http.ResponseWriter, req *http.Request) {
-// 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
-// 	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-// 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
-// }
-
 func indexGetHandler(w http.ResponseWriter, r *http.Request) {
-
-	// setupResponse(&w, r)
-	// if (*r).Method == "OPTIONS" {
-	// 	return
-	// }
 
 	_, err := models.CreatePageView(r)
 	if err != nil {
 		log.Fatalf("Error while calling GetApplication model: %v", err)
 	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
 
 	deliveryOrders, err := models.ListDeliveryOrders(1, 100)
 	if err != nil {
 		log.Fatalf("Error while calling GetApplication model: %v", err)
+	}
+	routes, err := models.ListRoutes(100)
+	if err != nil {
+		log.Fatalf("Error while calling GetRoutes model: %v", err)
 	}
 
 	application, err := models.GetApplication(10)
@@ -48,9 +44,11 @@ func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 
 	utils.ExecuteTemplate(w, "index.html", struct {
 		DeliveryOrders []*dms.DeliveryOrder
+		Routes         []*route.Route
 		Application    *app.Application
 	}{
 		DeliveryOrders: deliveryOrders.DeliveryOrders,
+		Routes:         routes.Routes,
 		Application:    application.Application,
 	})
 }
