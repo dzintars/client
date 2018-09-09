@@ -18,7 +18,7 @@
             <button class="md outline danger" onclick="toggle('orders-delete-template', 'ws-main-panelx')">Delete</button>
             <button class="md outline primary" onclick="fadeIn('orders-geocode')">Geo-Code</button>
             <button class="md outline light">Remove Geo Metadata</button>
-            <button class="md outline light">Add Route</button>
+            <button class="md outline success" onclick="fadeIn('route-new')">Add Route</button>
             <button class="md outline light">Export</button>
         </div>
         <div slot="ws-main-panel" id="order-create-form" class="order-create-form">
@@ -108,6 +108,22 @@
             <div class="footer">
                 <button onclick="fadeOut('orders-geocode')" class="md fill warning">Cancel</button>
                 <button type="submit" form="orders-batch-geocode-form" class="md fill success">Geo-Code</button>
+            </div>
+        </div>
+
+        <div slot="ws-main-panel" id="route-new" class="route-new">
+            <div class="header"><p>Create New Route via gRPC Kafka</div>
+            <div class="body">
+                <form name="frm-route-new" id="frm-route-new" action="/routes" method="POST">
+                    <div>
+                        <label for="txt-route-name">Route Name</label>
+                        <input type="text" id="txt-route-name" name="txt-route-name" value="" placeholder="Alphanumeric route name"/>
+                    </div>
+                </form>
+            </div>
+            <div class="footer">
+                <button onclick="fadeOut('route-new')" class="md fill warning">Cancel</button>
+                <button type="submit" form="frm-route-new" action="#" class="md fill success">Create</button>
             </div>
         </div>
 

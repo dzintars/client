@@ -22,7 +22,7 @@ func GetApplication(applicationID int32) (*app.GetApplicationResponse, error) {
 	return res, nil
 }
 
-// ListApplications retrieve list of all films
+// ListApplications retrieve list of all applications
 func ListApplications(resultsPerPage int32) (*app.ListApplicationsResponse, error) {
 	cc := gLoc()
 	defer cc.Close()
